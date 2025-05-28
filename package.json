@@ -1,0 +1,73 @@
+{
+  "name": "my-backport-extension",
+  "displayName": "My Backport Extension",
+  "description": "A VS Code extension to backport commits to TensorFlow branches/tags",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:my-backport-extension.backportTo",
+    "onCommand:my-backport-extension.setGitHubToken"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "my-backport-extension.backportTo",
+        "title": "Backport To..."
+      },
+      {
+        "command": "my-backport-extension.setGitHubToken",
+        "title": "Set GitHub Token…"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "my-backport-extension.backportTo",
+          "when": "resourceLangId == cpp"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "my-backport-extension.backportTo"
+        }
+      ],
+      "scm/context": [
+        {
+          "command": "my-backport-extension.backportTo",
+          "when": "scmProvider == git",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/node-fetch": "^2.6.12",
+    "@types/vscode": "^1.98.2",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2"
+  }
+}
