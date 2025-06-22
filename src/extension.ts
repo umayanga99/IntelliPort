@@ -125,7 +125,7 @@ interface PatchResponse {
 }
 
 async function callPatchApi(request: BackportRequest): Promise<PatchResponse> {
-    const url = "https://d1af-192-248-14-69.ngrok-free.app/run";
+    const url = "https://7834-192-248-14-69.ngrok-free.app/run";
     
     try {
         const response = await axios.post<PatchResponse>(url, request, {
@@ -189,6 +189,8 @@ async function backportToCommand(ctx: vscode.ExtensionContext) {
     vscode.window.showInformationMessage('Calling backport API...');
     patch = await callPatchApi(request);
     vscode.window.showInformationMessage('API call successful!');
+    console.log('Patch received:', patch);
+    
   } catch (e) {
     console.error('API call failed:', e);
     
@@ -214,7 +216,6 @@ async function backportToCommand(ctx: vscode.ExtensionContext) {
       return;
     }
   }
-
 
   
 

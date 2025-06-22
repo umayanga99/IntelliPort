@@ -9,10 +9,6 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:my-backport-extension.backportTo",
-    "onCommand:my-backport-extension.setGitHubToken"
-  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
